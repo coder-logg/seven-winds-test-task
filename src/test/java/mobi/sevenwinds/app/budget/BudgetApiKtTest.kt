@@ -88,7 +88,7 @@ class BudgetApiKtTest : ServerTest() {
             .post("/author")
             .toResponse<AuthorRecord>()
 
-        Assert.assertEquals(AuthorEntity.find { AuthorTable.fio eq author.fio }.count(), 1)
+        Assert.assertEquals(transaction { AuthorEntity.find { AuthorTable.fio eq author.fio }.count() } , 1)
     }
 
     private fun addRecord(record: BudgetRecord) {
