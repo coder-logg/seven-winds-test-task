@@ -79,9 +79,9 @@ fun Application.module() {
     install(StatusPages) {
         val log = LoggerFactory.getLogger("InternalError")
 
-        exception<NotFoundException> { cause ->
-            call.respond(HttpStatusCode.NotFound, cause.message ?: "")
-        }
+//        exception<NotFoundException> { cause ->
+//            call.respond(HttpStatusCode.NotFound, cause.message ?: "")
+//        }
         exception<OpenAPIRequiredFieldException> { cause ->
             call.respond(HttpStatusCode.BadRequest, cause.message ?: "")
         }
